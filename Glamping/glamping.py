@@ -1,4 +1,3 @@
-# Sistema de Administración de Glamping - Versión Simplificada
 from datetime import datetime, date
 
 class Persona:
