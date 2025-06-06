@@ -8,13 +8,9 @@ class Persona:
         self.__identificacion = identificacion
 
     def get_nombre(self): return self.__nombre
-    def set_nombre(self, valor): self.__nombre = valor
     def get_telefono(self): return self.__telefono
-    def set_telefono(self, valor): self.__telefono = valor
     def get_email(self): return self.__email
-    def set_email(self, valor): self.__email = valor
     def get_identificacion(self): return self.__identificacion
-    def set_identificacion(self, valor): self.__identificacion = valor
 
     def mostrar_info(self):
         print("--- Información de Persona ---")
