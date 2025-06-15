@@ -1,4 +1,10 @@
+from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime, date
+
+app = Flask(__name__)
+
+def estilo():
+    return render_template("index.html")
 
 class Persona:
     def __init__(self, nombre, telefono, email, identificacion):
@@ -17,6 +23,31 @@ class Persona:
         print("Nombre:", self.__nombre)
         print("Teléfono:", self.__telefono)
         print("Email:", self.__email)
+
+usuarios = []
+
+@app.route("/", methods = ["GET", "POST"])
+def index():
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        email = request.form["email"]
+        telefono = request.form["telefono"]
+        identificacion = request.form["identificacion"]
+
+        persona = Persona(nombre, telefono, email, identificacion)
+        usuarios.append(persona)
+        return redirect(url_for("ver_usuarios"))
+
+    return render_template("index.html")
+
+@app.route("/usuarios")
+def ver_usuarios():
+    return render_template("usuarios.html", usuarios = usuarios)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
 
 class Huesped(Persona):
     def __init__(self, nombre, telefono, email, identificacion, fecha_nacimiento, pais_origen, preferencias):

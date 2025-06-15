@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Usuarios Registrados</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style-usuarios.css') }}"
+    />
+  </head>
+  <body>
+    <h2>Usuarios registrados</h2>
+
+    <div class="contenedor">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Identificación</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for persona in usuarios %}
+          <tr>
+            <td>{{ persona.nombre() }}</td>
+            <td>{{ persona.email() }}</td>
+            <td>{{ persona.telefono() }}</td>
+            <td>{{ persona.identificacion() }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <a href="{{ url_for('index') }}">Volver</a>
+  </body>
+</html>
